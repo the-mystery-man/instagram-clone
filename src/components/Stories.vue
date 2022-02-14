@@ -30,10 +30,11 @@ export default {
     .story-container{
         height: 100px;
         width: 100%;
-        
+        margin-top: 40px;
         overflow-x: scroll;
         overflow-y: hidden;
         white-space: nowrap;
+        padding: 10px 0;
     }
     .inner-container{
         display: inline-block
