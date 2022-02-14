@@ -26,8 +26,16 @@
         <div class="post-footer">
             <div class="row q-mx-md">
                 <div class="col-8 text-start icons-container">
+                    <span v-if="postLiked">
+                        <q-icon @click = "likePost" color="black" class = "post-icons  like-icons" name = "favorite_bordered" />  &nbsp;
+                    </span>
+                    <span v-else>
+                        <q-icon v-show="this.postLiked" @click = "likePost" color="red" class = "post-icons " name ="favorite" />
+                    </span>
+                    <!--
                     <q-icon v-show="!this.postLiked" @click = "likePost" color="black" class = "post-icons  like-icons" name = "favorite_bordered" />  &nbsp;
                     <q-icon v-show="this.postLiked" @click = "likePost" color="red" class = "post-icons " name ="favorite" />
+                    -->
 
                      <q-icon color = "black" class = "post-icons" name="chat_bubble_outline" />
                 </div>
@@ -60,19 +68,20 @@ export default {
         return{
             postLiked: false,
             likes: Math.floor(Math.random() * 1000),
-            modalOpened: false
+            // modalOpened: false
         }
     },
     methods: {
         likePost(){
             this.postLiked = !this.postLiked;
-            this.likes+=1;
+            this.likes+= this.postLiked ? 0 : 1;
         },
-        toggleModal(){
-            this.modalOpened = !this.modalOpened;
-        }
+        // toggleModal(){
+        //     this.modalOpened = !this.modalOpened;
+        // }
     }
 }
+
 </script>
 
 <style scoped>

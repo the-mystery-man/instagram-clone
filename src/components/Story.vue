@@ -2,7 +2,7 @@
     <div class = "story text-center">
         <div>
             <q-btn round class = "avatar-container">
-                <q-avatar size = "60px">
+                <q-avatar size = "60px" class = "avatar-border">
                     <img :src = "this.userStory.picture.thumbnail" />
                 </q-avatar>
             </q-btn>
@@ -25,5 +25,8 @@ export default {
     }
     .avatar-container{
         margin: 5px 10px;
+    }
+    .avatar-border{
+        border: 5px solid blue
     }
 </style>
