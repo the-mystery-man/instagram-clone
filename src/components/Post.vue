@@ -143,11 +143,7 @@ export default {
 
     .big-boys{
         font-size: 7.5rem;
-        /* transition: display 300ms ease 300ms; */
-        animation-duration: 1000ms;
-        animation-name: like-heart-animation;
-        animation-timing-function: ease-in-out;
-        opacity: 0.7;
+        transition: display 300ms ease 300ms;
     }
 
     .like-big{
