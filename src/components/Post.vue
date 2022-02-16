@@ -31,7 +31,7 @@
         </div>
         <!-- Post Footer -->
         <div class="post-footer">
-            
+
             <div class="bad">
                 <div class="bad">
                     <div class="badguy">
@@ -108,7 +108,7 @@ export default {
         font-weight: bold
     }
     .side-to-avatar{
-        padding-left: 10px 
+        padding-left: 10px
     }
     .post-image{
         width: 100%;
@@ -119,8 +119,8 @@ export default {
         margin: 20px
     }
 
-    
-    
+
+
 
     .bad{
         display: flex;
@@ -139,7 +139,7 @@ export default {
     .move-end{
         justify-content: flex-end;
     }
-   
+
 
     .big-boys{
         font-size: 7.5rem;
@@ -152,7 +152,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    
+
     .post-icons{
         font-size: 190%;
     }

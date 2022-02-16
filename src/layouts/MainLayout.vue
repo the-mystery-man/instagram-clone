@@ -27,7 +27,11 @@ export default defineComponent({
 </script>
 
 
-<style scoped>
+<style >
+
+p{
+  font-size: 0.75rem;
+}
 .container{
   width: 80%;
   display: flex;

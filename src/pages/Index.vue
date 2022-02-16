@@ -2,11 +2,11 @@
   <q-page >
     <div class="row">
       <div class="col-md-8">
-        <Stories 
+        <Stories
           :userStories="userStories"
         />
         <div class = "q-mt-lg" :key = "post.login.uuid" v-for="post in posts">
-          <Post 
+          <Post
             :post="post"
           />
         </div>
@@ -15,7 +15,7 @@
         <!-- Where the side bar will be placed -->
       </div>
     </div>
-    
+
   </q-page>
 </template>
 
@@ -49,7 +49,7 @@ export default defineComponent({
     axios("/?page=1&results=20")
     .then(({data})=> {
       this.posts = data.results;
-      console.log(this.posts);
+      //console.log(this.posts);
     })
     .catch(({message}) => {
       console.log(message)
