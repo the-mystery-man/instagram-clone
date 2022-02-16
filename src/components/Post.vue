@@ -21,6 +21,10 @@
         <!-- Post Image -->
         <div class="post-image">
             <img @dblclick="likePost" :src = "this.post.picture.large" class = "post-image" />
+            <div class="like-big">
+                <q-icon v-show="this.showHeart" id="first" color="white" class = "big-boys" name ="favorite" />
+            </div>
+            
         </div>
         <!-- Post Footer -->
         <div class="post-footer">
@@ -32,19 +36,15 @@
                     <span v-else>
                         <q-icon v-show="this.postLiked" @click = "likePost" color="red" class = "post-icons " name ="favorite" />
                     </span>
-                    <!--
-                    <q-icon v-show="!this.postLiked" @click = "likePost" color="black" class = "post-icons  like-icons" name = "favorite_bordered" />  &nbsp;
-                    <q-icon v-show="this.postLiked" @click = "likePost" color="red" class = "post-icons " name ="favorite" />
-                    -->
-
                      <q-icon color = "black" class = "post-icons" name="chat_bubble_outline" />
                 </div>
-                <div class="col-4 text-end">
-                    <q-icon color = "black" class = "post-icons" name="bookmark_bordered" />
+                <div class="col-4 text-end move-end">
+                    <q-icon color = "black" class = "post-icons" name="bookmark_outline" />
                 </div>
             </div>
-            <div class="row">
-                <b> {{likes}} llikes </b>
+
+            <div class="row stupid">
+                <b> {{likes}} likes </b>
             </div>
             <div class="row">
                 <div class="handle text-siz view-commentse"><b>{{ (this.post.name.first+ this.post.name.last).toLowerCase() }} </b> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, recusandae consectetur voluptate pariatur similique voluptas quasi sit labore quisquam neque!</div>
@@ -68,17 +68,22 @@ export default {
         return{
             postLiked: false,
             likes: Math.floor(Math.random() * 1000),
-            // modalOpened: false
         }
     },
     methods: {
+        showHeartFunc(){
+            if(this.postLiked){
+                this.showHeart = true;
+                setTimeout(()=>{
+                    this.showHeart = false;
+                }, 300)
+            }
+        },
         likePost(){
+            this.likes+=this.postLiked?-1:1;
             this.postLiked = !this.postLiked;
             this.likes+= this.postLiked ? 0 : 1;
-        },
-        // toggleModal(){
-        //     this.modalOpened = !this.modalOpened;
-        // }
+        }
     }
 }
 
@@ -101,21 +106,46 @@ export default {
     .post-image{
         width: 100%;
         height: auto;
+        position: relative;
     }
     .post-footer{
         margin: 20px
     }
-    .text-end{
-        text-align:end
+
+    
+    
+
+    .bad{
+        display: flex;
+        width: 100%;
     }
-    .icons-container{
-        position: relative
+
+    .badguy{
+        position: relative;
     }
-    .like-icons{
+
+    .red-like{
+        position: relative;
+        left: 0;
+    }
+
+    .move-end{
+        justify-content: flex-end;
+    }
+   
+
+    .big-boys{
+        font-size: 7.5rem;
+        transition: display 300ms ease 300ms;
+    }
+
+    .like-big{
         position: absolute;
-        top: 0;
-        left: 0
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
+    
     .post-icons{
         font-size: 190%;
     }
