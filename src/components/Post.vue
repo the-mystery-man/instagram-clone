@@ -28,26 +28,15 @@
         </div>
         <!-- Post Footer -->
         <div class="post-footer">
-            <div class="row q-mx-md">
-                <div class="col-8 text-start icons-container">
-                    <span v-if="postLiked">
-                        <q-icon @click = "likePost" color="black" class = "post-icons  like-icons" name = "favorite_bordered" />  &nbsp;
-                    </span>
-                    <span v-else>
-                        <q-icon v-show="this.postLiked" @click = "likePost" color="red" class = "post-icons " name ="favorite" />
-                    </span>
-                     <q-icon color = "black" class = "post-icons" name="chat_bubble_outline" />
-                </div>
-                <div class="col-4 text-end move-end">
-                    <q-icon color = "black" class = "post-icons" name="bookmark_outline" />
-                </div>
-            </div>
 
-            <div class="row stupid">
-                <b> {{likes}} likes </b>
-            </div>
-            <div class="row">
-                <div class="handle text-siz view-commentse"><b>{{ (this.post.name.first+ this.post.name.last).toLowerCase() }} </b> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, recusandae consectetur voluptate pariatur similique voluptas quasi sit labore quisquam neque!</div>
+            <div class="bad">
+                <div class="bad">
+                    <div class="badguy">
+                        <q-icon @click = "likePost" v-show="!this.postLiked" id="first" color="black" class = "post-icons " name ="favorite_outline" />
+                        <q-icon @click = "likePost" v-show="this.postLiked" id="second" color="red" class = "post-icons  red-like" name ="favorite" />
+                    </div>
+                    <q-icon color = "black" class = "post-icons q-ml-sm" name="chat_bubble_outline" />
+                </div>
             </div>
             <div class="row">
                 <span @click = "toggleModal" class="text-muted view-comments">View all comments</span>
@@ -101,7 +90,7 @@ export default {
         font-weight: bold
     }
     .side-to-avatar{
-        padding-left: 10px 
+        padding-left: 10px
     }
     .post-image{
         width: 100%;
@@ -112,8 +101,8 @@ export default {
         margin: 20px
     }
 
-    
-    
+
+
 
     .bad{
         display: flex;
@@ -132,7 +121,7 @@ export default {
     .move-end{
         justify-content: flex-end;
     }
-   
+
 
     .big-boys{
         font-size: 7.5rem;
@@ -145,7 +134,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    
+
     .post-icons{
         font-size: 190%;
     }

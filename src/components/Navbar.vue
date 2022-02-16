@@ -1,32 +1,36 @@
 <template>
-    <q-header elevated class="bg-white text-black header" >
-      <q-toolbar >
-        
-        <q-toolbar-title class = "toolbar-title">
-          Instagram
-        </q-toolbar-title>
+    <q-header  class="bg-white text-black header" >
+      <q-toolbar class="roll" >
+        <div class="moving">
+          <q-toolbar-title class = "toolbar-title">
+            Instagram
+          </q-toolbar-title>
 
-        <q-input standout v-model="text" placeholder="Search" :dense="dense" style="width:320px" class="q-mr-xl">
-            <template v-slot:prepend>
-                <q-icon name="search" />
-            </template>
-        </q-input>
-
-    
-
-        <div class="q-pa-md q-gutter-sm" >
-          <q-btn flat round icon="home" />
-          <q-btn flat round icon="send" />
-          <q-btn flat round  icon="add" />
-          <q-btn flat round icon="explore" />
-          <q-btn flat round icon="favorite_outline" />
+          <div class="input">
+            <input type="text" placeholder="Search" class="q-mr-xl search" >
+            <q-icon  name="search" class="search-icon" />
+          </div>
         </div>
-        <div class="profile">
-            <q-icon name="person" class="profile-pic" />
+
+
+
+
+
+        <div class="driven">
+          <q-icon class="cursor-pointer" :key="size" :size="size" name="home" style="font-size: 2em"/>
+          <q-icon class="cursor-pointer" :key="size" :size="size" name="send" style="font-size: 2em"/>
+          <q-icon class="cursor-pointer" :key="size" :size="size" name="add" style="font-size: 2em"/>
+          <q-icon class="cursor-pointer" :key="size" :size="size" name="explore" style="font-size: 2em"/>
+          <q-icon class="cursor-pointer" :key="size" :size="size" name="favorite_outline" style="font-size: 2em"/>
+
+
+          <q-icon name="person" class="profile profile-pic cursor-pointer" />
         </div>
+
+
       </q-toolbar>
     </q-header>
-    
+
 </template>
 
 
@@ -37,6 +41,45 @@ export default {
 </script>
 
 <style scoped>
+  .roll{
+    display: flex;
+    justify-content: space-between;
+  }
+  .input{
+    position:relative
+  }
+
+  input{
+    padding: 10px 35px;
+  }
+  .search-icon{
+    font-size: 1.5rem;
+    color: grey;
+    position: absolute;
+    left: 7px;
+    top: 9px;
+  }
+  .moving{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 67%;
+  }
+
+  .driven{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 33%;
+  }
+
+    .search{
+        width:100%;
+        border-radius: 22px;
+        height: 40px;
+    }
+
+
     .profile-pic{
         width: 100%;
         font-size: 1.2rem;
@@ -60,7 +103,9 @@ export default {
         background-color: none;
     }
     .header{
-        padding: 0 15%;
+        padding: 1% 15%;
         height: 70px;
+        border: 0.3px solid rgb(128, 128, 128, 0.2);
+        border-right: 0px;
     }
 </style>

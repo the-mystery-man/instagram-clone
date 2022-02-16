@@ -15,8 +15,7 @@
             <p>See All</p>
         </div>
 
-        <Suggestion />
-
+        <Suggestion :suggestionData = "suggestions" />
 
     </div>
 
@@ -26,12 +25,34 @@
 
 <script>
 import Suggestion from '../components/Suggestion'
+import axios from '../helpers/axiosPreload';
+
 
 export default {
     name: 'Sidebar',
     components:{
         Suggestion
-    }
+    },
+    data(){
+      return{
+        user: {},
+        suggestions: []
+      }
+    },
+
+    methods:{
+     async suggestion(){
+          const profileImage = await axios("/?page=1&results=6");
+          const res = profileImage.data.results;
+          // this.suggestionData = res;
+          console.log(res);
+          this.user = res[0];
+          this.suggestions =res.filter(item => this.user.login.uuid !== item.login.uuid)
+      }
+    },
+    created(){
+      this.suggestion()
+    },
 }
 </script>
 
@@ -65,7 +86,7 @@ export default {
 
     .pp{
         display: flex;
-    
+
     }
 
     .pp p{
@@ -73,8 +94,9 @@ export default {
         margin-left: 7px;
     }
     .blue-text{
-        color: blue;
+        color: rgb(46, 199, 250);
         margin: auto 0;
+
     }
     .suggest{
         display: flex;
