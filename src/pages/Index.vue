@@ -2,6 +2,7 @@
   <q-page >
     <div class="row">
       <div class="col-md-8">
+        <Navbar />
         <Stories
           :userStories="userStories"
         />
@@ -11,8 +12,8 @@
           />
         </div>
       </div>
-      <div class="col-md-4 md">
-        <!-- Where the side bar will be placed -->
+      <div class>
+        <Sidebar />
       </div>
     </div>
 
@@ -22,8 +23,11 @@
 <script>
 import axios from '../helpers/axiosPreload';
 import { defineComponent } from 'vue';
+import Navbar from '../components/Navbar'
 import Stories from '../components/Stories';
 import Post from '../components/Post';
+import Sidebar from '../components/Sidebar'
+import Tooltip from 'src/components/Tooltip.vue';
 
 export default defineComponent({
   name: 'PageIndex',
@@ -34,8 +38,12 @@ export default defineComponent({
     }
   },
   components: {
-    Stories, Post
-  },
+    Stories,
+    Post,
+    Navbar,
+    Sidebar,
+    Tooltip
+},
   created(){
     axios("/?page=1&results=20")
     .then(({data})=> {

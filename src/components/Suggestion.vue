@@ -1,17 +1,38 @@
 <template>
         <div class="second" :key="suggestion.login.uuid" v-for="suggestion in this.suggestionData">
             <div class="pp" >
-                    <img :src = "suggestion.picture.thumbnail"  class="side-img cursor-pointer"/>
-                    <p>{{suggestion.name.first}} {{suggestion.name.last}} <br> <span>{{suggestion.name.first}}</span></p>
+                    <div class="cane">
+                      <img @mouseover = "toggleTooltip" @mouseleave = "toggleTooltip" :src = "suggestion.picture.thumbnail"  class="side-img cursor-pointer"/>
+
+                    </div>
+                    <p>{{suggestion.name.first}} {{suggestion.name.last}} <br> <span>New to Instagram</span></p>
             </div>
-            <p class="blue-text">Follow</p>
+            <p class="blue-text cursor-pointer">Follow</p>
         </div>
+        <Tooltip :toolTip = "toolTip" />
+
 </template>
 
 <script>
+
+import Tooltip from './Tooltip'
+
 export default {
     name: 'Suggestion',
     props: ['suggestionData'],
+    components:{
+      Tooltip,
+    },
+    data(){
+        return{
+            toolTip: false,
+        }
+    },
+    methods:{
+      toggleTooltip(){
+        this.toolTip = !this.toolTip;
+      }
+    }
 
 }
 </script>
@@ -33,6 +54,10 @@ export default {
         font-size: 1.5rem;
         margin: auto 0;
     }
+     .side-img:hover .tooltiptext {
+    visibility: visible;
+  }
+
     /* .side-img:hover{
       color:green;
 
@@ -55,4 +80,6 @@ export default {
         color: rgb(46, 199, 250);
         margin: auto 0;
     }
+
+
 </style>

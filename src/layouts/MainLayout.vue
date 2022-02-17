@@ -1,7 +1,5 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <Navbar />
-    <Sidebar />
 
     <q-page-container class = "row justify-center">
       <div class = " inner-container" >
@@ -14,20 +12,20 @@
 <script>
 
 import { defineComponent } from 'vue'
-import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
+
 
 export default defineComponent({
   name: 'MainLayout',
   components:{
-    Navbar,
-    Sidebar
+
   }
 })
 </script>
 
 
 <style >
+
+
 
 p{
   font-size: 0.75rem;

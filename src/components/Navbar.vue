@@ -37,6 +37,7 @@
 <script>
 export default {
     name:  "Navbar",
+
 }
 </script>
 
@@ -99,9 +100,7 @@ export default {
     .toolbar-title {
         /* font-family: 'Billabong, cursive' */
     }
-    .badguy:focus{
-        background-color: none;
-    }
+
     .header{
         padding: 1% 15%;
         height: 70px;
@@ -109,3 +108,17 @@ export default {
         border-right: 0px;
     }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
