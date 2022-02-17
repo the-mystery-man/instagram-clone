@@ -2,7 +2,7 @@
     <div class = "story text-center">
         <div>
             <q-btn round class = "avatar-container ">
-                <q-avatar size = "0px">
+                <q-avatar size = "60px">
                     <img :src = "this.userStory.picture.thumbnail" />
                 </q-avatar>
             </q-btn>
@@ -20,7 +20,11 @@ export default {
 
 <style scoped>
     .story{
-        display: inline-block;
+        /* position: relative; */
+        /* grid-area: 1/1;
+        float: left; */
+
+        /* flex-direction: row; */
     }
     .avatar-container{
         margin: 5px 10px;

@@ -28,7 +28,6 @@
         </div>
         <!-- Post Footer -->
         <div class="post-footer">
-
             <div class="bad">
                 <div class="bad">
                     <div class="badguy">
@@ -36,15 +35,9 @@
                         <q-icon @click = "likePost" v-show="this.postLiked" id="second" color="red" class = "post-icons  red-like" name ="favorite" />
                     </div>
                     <q-icon color = "black" class = "post-icons q-ml-sm" name="chat_bubble_outline" />
-                </div>
+
+                <div class="handle text-siz view-commentse"><b>{{ (this.post.name.first+ this.post.name.last).toLowerCase() }} </b> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, recusandae consectetur voluptate pariatur similique voluptas quasi sit labore quisquam neque!</div>
             </div>
-            <div class="row">
-                <span @click = "toggleModal" class="text-muted view-comments">View all comments</span>
-                <!-- <q-modal
-                    v-model = "modalOpened"
-                >
-                    <h1>Quasar Modal</h1>
-                </q-modal> -->
             </div>
         </div>
     </div>
@@ -100,10 +93,6 @@ export default {
     .post-footer{
         margin: 20px
     }
-
-
-
-
     .bad{
         display: flex;
         width: 100%;
