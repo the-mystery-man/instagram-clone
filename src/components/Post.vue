@@ -34,12 +34,76 @@
                         <q-icon @click = "likePost" v-show="!this.postLiked" id="first" color="black" class = "post-icons " name ="favorite_outline" />
                         <q-icon @click = "likePost" v-show="this.postLiked" id="second" color="red" class = "post-icons  red-like" name ="favorite" />
                     </div>
-                    <q-icon color = "black" class = "post-icons q-ml-sm" name="chat_bubble_outline" />
+                    <q-icon color = "black" class = "post-icons q-ml-sm" name="chat_bubble_outline" @click = "this.showDialog = true"/>
 
                 <div class="handle text-siz view-commentse"><b>{{ (this.post.name.first+ this.post.name.last).toLowerCase() }} </b> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, recusandae consectetur voluptate pariatur similique voluptas quasi sit labore quisquam neque!</div>
             </div>
             </div>
         </div>
+        <!-- Post Dialog -->
+        <q-dialog v-model="showDialog">
+            <q-card class = "dialog-card">
+                <q-card-section class="card-sec">
+                    <div class="row card-sec-child">
+                        <div class="col-md-6 image-container">
+                            <img @dblclick="likePost" :src = "this.post.picture.large" class = "post-image dialog-image" />
+                        </div>
+                        <div class="col-md-6 q-pl-md">
+                            <div class="dialog-user">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <q-btn round>
+                                            <q-avatar size = "40px">
+                                                <img :src = "this.post.picture.thumbnail" />
+                                            </q-avatar>
+                                        </q-btn>
+                                    </div>
+                                    <div class="col-11 side-to-avatar">
+                                        <div class = 'q-ml-lg'>
+                                            <div class="handle text-bold">{{ (this.post.name.first+ this.post.name.last).toLowerCase() }}</div>
+                                            <div class="under-handle">{{ this.post.location.city+"."}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dialog-post-details q-mt-lg">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <q-btn round>
+                                            <q-avatar size = "40px">
+                                                <img :src = "this.post.picture.thumbnail" />
+                                            </q-avatar>
+                                        </q-btn>
+                                    </div>
+                                    <div class="col-11 post details">
+                                        <div class = 'q-ml-lg'>
+                                            <div class="handle text-bold">{{ (this.post.name.first+ this.post.name.last).toLowerCase() }}</div>
+                                            <!-- <div class="under-handle">{{ this.post.location.city+"."}}</div> -->
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officiis distinctio veritatis accusamus inventore possimus quis voluptates molestias repellendus sequi. Architecto, mollitia! Aperiam dolore saepe sapiente. 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </q-card-section>
+            </q-card>
+        </q-dialog>
+        <!-- <q-dialog v-model="showDialog" transition-show="rotate" transition-hide="rotate" >
+            <q-card class = "dialog-card">
+                <q-card-section>
+                    <div class="row">
+                        <div class="col-md-6 flex items-center ">
+                            <img @dblclick="likePost" :src = "this.post.picture.large" class = "post-image dialog-image" />
+                        </div>
+                        <div class="col-md-6 q-pl-md">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut suscipit et, vel totam accusamus saepe, quibusdam expedita animi eos ratione dolor facilis veritatis doloribus nisi, unde hic eaque laudantium id consequatur sapiente? Ipsum doloribus maiores facere debitis optio, fugit illo officiis deserunt ad ducimus! Libero eius delectus id? Dicta, quasi?
+                        </div>
+                    </div>
+                </q-card-section>
+
+            </q-card>
+        </q-dialog> -->
     </div>
 </template>
 
@@ -50,6 +114,7 @@ export default {
         return{
             postLiked: false,
             likes: Math.floor(Math.random() * 1000),
+            showDialog: false
         }
     },
     methods: {
@@ -68,10 +133,12 @@ export default {
         }
     }
 }
-
 </script>
 
 <style scoped>
+    .border{
+        border: 1px solid black
+    }
     .post-container{
         margin: 20px 0;
         border: 1px solid #ccc;
@@ -97,33 +164,26 @@ export default {
         display: flex;
         width: 100%;
     }
-
     .badguy{
         position: relative;
     }
-
     .red-like{
         position: relative;
         left: 0;
     }
-
     .move-end{
         justify-content: flex-end;
     }
-
-
     .big-boys{
         font-size: 7.5rem;
         transition: display 300ms ease 300ms;
     }
-
     .like-big{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
     .post-icons{
         font-size: 190%;
     }
@@ -137,5 +197,35 @@ export default {
     .view-comments{
         cursor: pointer;
     }
+    .card-sec{
 
+        height: 100%;
+    }
+    .card-sec-child{
+        height: 100%;
+    }
+    .dialog-card{
+        height: 80vh;
+        width: 100vw
+    }
+
+    .row{
+        height: 100% !important;
+    }
+
+    .image-container{
+        padding: 20% 0;
+        /* transform: translate(-50%, -50%); */
+        background-color: #000
+    }
+
+    .dialog-image{
+        /* height: 100%; */
+        display: block !important;
+        margin: auto 0 !important;
+    }
+    .dialog-user{
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 15px
+    }
 </style>
