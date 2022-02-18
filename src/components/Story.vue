@@ -1,7 +1,7 @@
 <template>
     <div class = "story text-center">
         <div>
-            <q-btn round class = "avatar-container">
+            <q-btn round class = "avatar-container ">
                 <q-avatar size = "60px">
                     <img :src = "this.userStory.picture.thumbnail" />
                 </q-avatar>
@@ -20,10 +20,15 @@ export default {
 
 <style scoped>
     .story{
-        /* float: left; */
-        display: inline-block;
+        /* position: relative; */
+        /* grid-area: 1/1;
+        float: left; */
+
+        /* flex-direction: row; */
     }
     .avatar-container{
         margin: 5px 10px;
+        background: linear-gradient(to right, rgb(206, 64, 64), rgb(128, 1, 60));
+        padding: 2px
     }
 </style>

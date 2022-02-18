@@ -24,14 +24,10 @@
             <div class="like-big">
                 <q-icon v-show="this.showHeart" id="first" color="white" class = "big-boys" name ="favorite" />
             </div>
-            <!-- <div class="like-big">
-                <q-icon @click = "likePost" v-show="!this.postLiked" id="first" color="black" class = " big-boys" name ="favorite_outline" />
-                <q-icon @click = "likePost" v-show="this.postLiked" id="first" color="red" class = " big-boys" name ="favorite" />
-            </div>  -->
+            
         </div>
         <!-- Post Footer -->
         <div class="post-footer">
-
             <div class="bad">
                 <div class="bad">
                     <div class="badguy">
@@ -39,25 +35,9 @@
                         <q-icon @click = "likePost" v-show="this.postLiked" id="second" color="red" class = "post-icons  red-like" name ="favorite" />
                     </div>
                     <q-icon color = "black" class = "post-icons q-ml-sm" name="chat_bubble_outline" />
-                </div>
-                <div class="col-4 text-end move-end">
-                    <q-icon color = "black" class = "post-icons" name="bookmark_outline" />
-                </div>
-            </div>
 
-            <div class="row stupid">
-                <b> {{likes}} llikes </b>
-            </div>
-            <div class="row">
                 <div class="handle text-siz view-commentse"><b>{{ (this.post.name.first+ this.post.name.last).toLowerCase() }} </b> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, recusandae consectetur voluptate pariatur similique voluptas quasi sit labore quisquam neque!</div>
             </div>
-            <div class="row">
-                <span @click = "toggleModal" class="text-muted view-comments">View all comments</span>
-                <!-- <q-modal
-                    v-model = "modalOpened"
-                >
-                    <h1>Quasar Modal</h1>
-                </q-modal> -->
             </div>
         </div>
     </div>
@@ -70,13 +50,10 @@ export default {
         return{
             postLiked: false,
             likes: Math.floor(Math.random() * 1000),
-            modalOpened: false,
-            showHeart: false
         }
     },
     methods: {
         showHeartFunc(){
-            console.log("Show heart function")
             if(this.postLiked){
                 this.showHeart = true;
                 setTimeout(()=>{
@@ -87,13 +64,11 @@ export default {
         likePost(){
             this.likes+=this.postLiked?-1:1;
             this.postLiked = !this.postLiked;
-            this.showHeartFunc();
-        },
-        toggleModal(){
-            this.modalOpened = !this.modalOpened;
+            this.likes+= this.postLiked ? 0 : 1;
         }
     }
 }
+
 </script>
 
 <style scoped>
@@ -118,10 +93,6 @@ export default {
     .post-footer{
         margin: 20px
     }
-
-
-
-
     .bad{
         display: flex;
         width: 100%;
