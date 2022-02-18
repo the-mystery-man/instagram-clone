@@ -17,11 +17,11 @@
 
 
         <div class="driven">
-          <q-icon class="cursor-pointer" :key="size" :size="size" name="home" style="font-size: 2em"/>
-          <q-icon class="cursor-pointer" :key="size" :size="size" name="send" style="font-size: 2em"/>
-          <q-icon class="cursor-pointer" :key="size" :size="size" name="add" style="font-size: 2em"/>
-          <q-icon class="cursor-pointer" :key="size" :size="size" name="explore" style="font-size: 2em"/>
-          <q-icon class="cursor-pointer" :key="size" :size="size" name="favorite_outline" style="font-size: 2em"/>
+          <q-icon clickable class="cursor-pointer" :key="size" :size="size" name="home" style="font-size: 2em"/>
+          <q-icon clickable class="cursor-pointer" :key="size" :size="size" name="send" style="font-size: 2em"/>
+          <q-icon clickable class="cursor-pointer" :key="size" :size="size" name="add" style="font-size: 2em"/>
+          <q-icon clickable class="cursor-pointer" :key="size" :size="size" name="explore" style="font-size: 2em"/>
+          <q-icon clickable class="cursor-pointer" :key="size" :size="size" name="favorite_outline" style="font-size: 2em"/>
 
 
           <q-icon name="person" class="profile profile-pic cursor-pointer" />
@@ -37,6 +37,7 @@
 <script>
 export default {
     name:  "Navbar",
+
 }
 </script>
 
@@ -46,11 +47,18 @@ export default {
     justify-content: space-between;
   }
   .input{
-    position:relative
+    position:relative;
+    border: 0px;
   }
 
   input{
     padding: 10px 35px;
+    border: 1px solid rgb(241, 240, 240) ;
+    background: rgb(241, 240, 240);
+  }
+
+  input:focus{
+    border: 1px solid rgb(241, 240, 240);
   }
   .search-icon{
     font-size: 1.5rem;
@@ -99,9 +107,7 @@ export default {
     .toolbar-title {
         /* font-family: 'Billabong, cursive' */
     }
-    .badguy:focus{
-        background-color: none;
-    }
+
     .header{
         padding: 1% 15%;
         height: 70px;
@@ -109,3 +115,17 @@ export default {
         border-right: 0px;
     }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

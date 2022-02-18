@@ -3,16 +3,16 @@
         <div class="side">
             <div class="side-profile">
                 <div class="pp">
-                    <q-icon name="person" class="side-img" />
-                    <p>Lorem Dude <br> <span>Dude</span></p>
+                    <img :src = "user.picture.thumbnail"  class="side-img cursor-pointer"/>
+                    <p class="cursor-pointer">{{user.name.first}} {{user.name.first}} <br> <span>{{user.name.first}}</span></p>
                 </div>
-                <p class="blue-text">Switch</p>
+                <p class="blue-text cursor-pointer">Switch</p>
             </div>
         </div>
     <!-- Suggestion for you -->
         <div class="suggest">
             <p>Suggestion for You</p>
-            <p>See All</p>
+            <p class="cursor-pointer">See All</p>
         </div>
 
         <Suggestion :suggestionData = "suggestions" />
@@ -35,7 +35,15 @@ export default {
     },
     data(){
       return{
-        user: {},
+        user: {
+          picture: {
+            thumbnail: ""
+          },
+          name: {
+            first: "",
+            last: ""
+          }
+        },
         suggestions: []
       }
     },
@@ -45,8 +53,8 @@ export default {
           const profileImage = await axios("/?page=1&results=6");
           const res = profileImage.data.results;
           // this.suggestionData = res;
-          console.log(res);
           this.user = res[0];
+          console.log(this.user);
           this.suggestions =res.filter(item => this.user.login.uuid !== item.login.uuid)
       }
     },
@@ -66,6 +74,7 @@ export default {
         right: 15.7%;
         height: 100vh;
         padding: 0.5%;
+        z-index: 1000;
     }
 
     .side-profile{
@@ -76,7 +85,6 @@ export default {
     }
 
     .side-img{
-        border: 1px solid;
         border-radius: 50%;
         width: 50px;
         height: 50px;
@@ -104,5 +112,8 @@ export default {
     }
     .suggest p{
         margin: 15px 0;
+    }
+    span{
+      color: grey;
     }
 </style>
